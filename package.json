@@ -4,12 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",  
+    "lint": "eslint ."
   },
   "dependencies": {
     "@headlessui/react": "^2.1.9",
