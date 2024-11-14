@@ -34,7 +34,7 @@ const AppRoutes = () => (
     <Route path="/terminos-servicio" element={<TermsOfService />} />
     <Route path="/productos/:categoria" element={<ProductsPage />} />
     <Route path="/politica-privacidad" element={<PrivacyPolicyPage />} />
-    <Route path="/reparaciones" element={<Reparaciones />} />
+    <Route path="/repair" element={<Reparaciones />} />
   </Routes>
 );
 
