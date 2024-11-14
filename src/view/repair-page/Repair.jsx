@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { socialMediaIcons } from "../../components/footer/menu";
 import SocialIcons from "../../components/footer/SocialIcons";
 
-const Reparaciones = () => {
+const RepairPage = () => {
   const location = useLocation();
 
   const message = "Hola, quisiera consultar por la reparación de un dispositivo. ¿Podrías darme información sobre costos y tiempos estimados? ¡Gracias!";
@@ -82,4 +82,4 @@ const Reparaciones = () => {
   );
 };
 
-export default Reparaciones;
+export default RepairPage;
