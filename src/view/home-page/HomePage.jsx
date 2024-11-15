@@ -31,10 +31,10 @@ const HomePage = () => {
   return (
     <div>
       <HeroBanner />
-      <FeaturesSection />
       <MostPopular products={mostPopularProducts} favourites={favourites} />
       <FeaturedProductsSlider products={selectedProducts} />
       <CategoriesGrid categories={categories} onCategoryClick={handleCategoryClick} />
+      <FeaturesSection />
       <PurchaseInstructions />
     </div>
   );
