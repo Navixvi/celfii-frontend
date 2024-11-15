@@ -10,14 +10,15 @@ const CartItem = ({ item }) => {
   return (
     <li
       key={item.id}
-      className="flex items-center justify-between p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      className="flex flex-col sm:flex-row items-center sm:justify-between p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow space-y-4 sm:space-y-0 sm:space-x-4">
+      
       <img
         src={item.images[0].url}
         alt={item.images[0].altText}
-        className="w-20 h-20 object-cover rounded-lg"
+        className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg flex-shrink-0"
       />
 
-      <div className="flex-1 ml-4">
+      <div className="flex-1 text-center sm:text-left">
         <h4 className="text-lg font-semibold text-gray-800">{item.name}</h4>
         <p className="text-gray-600">ARS {item.priceArs}</p>
       </div>
@@ -35,7 +36,7 @@ const CartItem = ({ item }) => {
 
       <button
         onClick={() => dispatch(removeCartFavs("cart", item))}
-        className="ml-4 px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+        className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors mt-2 sm:mt-0">
         Eliminar
       </button>
     </li>
