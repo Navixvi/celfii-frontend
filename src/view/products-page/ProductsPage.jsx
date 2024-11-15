@@ -123,9 +123,9 @@ const ProductsPage = () => {
 
   return (
     <div className="min-h-screen mt-5">
-      <div className="flex items-center justify-between gap-10 mb-10 font-medium">
-        <h1 className="text-2xl font-poppins lg:text-3xl">{title}</h1>
-        <div className="flex items-center gap-6">
+      <div className="flex items-center justify-between gap-10 mb-10 font-medium flex-wrap">
+        <h1 className="text-2xl font-poppins lg:text-3xl w-full lg:w-auto">{title}</h1>
+        <div className="flex items-center gap-6 w-full lg:w-auto justify-between lg:justify-end">
           <button className="flex gap-2" onClick={() => setIsFilterOpen(!isFilterOpen)}>
             <ListFilter />
             {isFilterOpen ? "Mostrar" : "Ocultar"} Filtros
@@ -136,6 +136,7 @@ const ProductsPage = () => {
           <SearchBar onSearch={(name) => updateSearch({ name })} variant="card" />
         </div>
       </div>
+
       <div className="relative flex gap-5">
         <aside
           className={`absolute top-0 left-0 bg-white transform transition-all ${
