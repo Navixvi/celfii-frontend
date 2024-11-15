@@ -8,6 +8,7 @@ import WhatsAppButton from "./components/whatsapp-button/WhatsAppButton";
 
 const App = () => {
   const { pathname } = useLocation();
+  const isUserPage = !pathname.startsWith("/private-admin-console");
 
   return (
     <>
@@ -19,11 +20,11 @@ const App = () => {
           pauseOnHover
           draggable
         />
-        {!pathname.startsWith("/private-admin-console") && <NavBar />}
+        {isUserPage && <NavBar />}
         <main className={`flex-1 ${pathname !== "/" ? "px-5 py-4 md:mx-10" : ""}`}>
           <AppRoutes />
         </main>
-        {!pathname.startsWith("/private-admin-console") && <WhatsAppButton />}
+        {isUserPage && <WhatsAppButton />}
         <Footer />
       </div>
     </>
