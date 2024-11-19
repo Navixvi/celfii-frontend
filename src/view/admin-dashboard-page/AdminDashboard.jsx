@@ -39,7 +39,7 @@ const CustomAppBar = (props) => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate("/");
+    navigate("/private-admin-entry");
   };
 
   const resource = "products";
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
     const userData = loadFromSessionStorage("userData");
 
     if (!userData) {
-      navigate("/");
+      navigate("/private-admin-entry");
       toast.error("La sesión ha expirado. Vuelve a iniciar sesión para continuar.");
     } else if (userData.role && userData.role.name === "Master") {
       setIsMaster(true);

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadCartFavs, loadProducts } from "../../redux/actions";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { loadFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from "../../helpers";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 
 import Cards from "../../components/cards/Cards";
 import Filter from "../../components/filter/Filter";
@@ -123,9 +126,9 @@ const ProductsPage = () => {
 
   return (
     <div className="min-h-screen mt-5">
-      <div className="flex items-center justify-between gap-10 mb-10 font-medium">
-        <h1 className="text-2xl font-poppins lg:text-3xl">{title}</h1>
-        <div className="flex items-center gap-6">
+      <div className="flex items-center justify-between gap-10 mb-10 font-medium flex-wrap">
+        <h1 className="text-2xl font-poppins lg:text-3xl w-full lg:w-auto">{title}</h1>
+        <div className="flex items-center gap-6 w-full lg:w-auto justify-between lg:justify-end">
           <button className="flex gap-2" onClick={() => setIsFilterOpen(!isFilterOpen)}>
             <ListFilter />
             {isFilterOpen ? "Mostrar" : "Ocultar"} Filtros
@@ -136,19 +139,32 @@ const ProductsPage = () => {
           <SearchBar onSearch={(name) => updateSearch({ name })} variant="card" />
         </div>
       </div>
+
       <div className="relative flex gap-5">
         <aside
           className={`absolute top-0 left-0 bg-white transform transition-all ${
             isFilterOpen ? "translate-x-0 w-80" : "-translate-x-80 w-0"
-          } h-[calc(100vh-250px)] overflow-visible transition-width duration-300`}
-        >
+          } h-[calc(100vh-250px)] overflow-visible transition-width duration-300`}>
           <Filter updateFilters={updateFilters} filters={filters} isOpen={isFilterOpen} />
         </aside>
         <div
-          className={`h-full flex-1 transition-all duration-300 ${isFilterOpen ? "ml-80" : "ml-0"}`}
-        >
+          className={`h-full flex-1 transition-all duration-300 ${
+            isFilterOpen ? "ml-80" : "ml-0"
+          }`}>
           {loading ? (
-            <p>Cargando productos...</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              {Array(10)
+                .fill(0)
+                .map((_, index) => (
+                  <div key={index} className="p-4 bg-white rounded shadow">
+                    <Skeleton height={150} />
+                    <div className="mt-4">
+                      <Skeleton width="80%" height={20} />
+                      <Skeleton width="60%" height={20} />
+                    </div>
+                  </div>
+                ))}
+            </div>
           ) : products.length === 0 ? (
             <p>No se encontraron productos.</p>
           ) : (
