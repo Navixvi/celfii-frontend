@@ -64,8 +64,8 @@ export const clearCartFavs = (key) => (dispatch) => {
 export const loadCartFavs = () => (dispatch) => {
   try {
     dispatch({ type: CART_FAVS_REQUEST });
-    const cart = loadFromLocalStorage("cart") || [];
-    const favourites = loadFromLocalStorage("favourites") || [];
+    const cart = loadFromLocalStorage("cart") || []
+    const favourites = loadFromLocalStorage("favourites") || []
     dispatch({
       type: CART_FAVS_SUCCESS,
       payload: { cart, favourites },
