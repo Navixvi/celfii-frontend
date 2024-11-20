@@ -12,7 +12,7 @@ const Footer = () => {
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <footer className="mt-20 bg-black">
+    <footer className="z-40 mt-20 bg-black">
       {!pathname.startsWith("/product") && !pathname.startsWith("//private-admin-console") && (
         <div className="p-8 text-center bg-gray-50 sm:p-12 md:py-20 md:px-24 lg:py-32 lg:px-40">
           <p className="text-lg font-medium md:text-xl">Estamos aquí para ti</p>
@@ -33,10 +33,10 @@ const Footer = () => {
           </button>
         </div>
       )}
-      <div className="px-20 2xl:px-0">
+      <div className="px-8 py-16 md:px-20 2xl:px-0">
         <ItemsContainer />
-        <div className="container flex items-center justify-between pt-2 pb-8 text-sm text-center text-gray-400">
-          <div className="flex gap-4">
+        <div className="container flex flex-col py-2 mt-8 text-sm text-gray-400 md:m-0 md:text-center lg:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-2 mb-2 md:mb-0 md:gap-4 md:flex-row md:items-center">
             <span>&copy; {new Date().getFullYear()} Cel-Fii. Todos los derechos reservados.</span>
             <Link
               to="/terminos-servicio"

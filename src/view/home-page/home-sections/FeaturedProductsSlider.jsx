@@ -7,8 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const FeaturedProductsSlider = ({ products }) => {
   const PrevArrow = ({ onClick }) => (
     <div
-      className="absolute left-0 z-10 transition-transform duration-300 ease-in-out transform -translate-y-1/2 cursor-pointer hover:scale-125"
-      style={{ top: "50%", left: "5px" }}
+      className="absolute -left-10 z-10 transition-transform duration-300 ease-in-out transform cursor-pointer top-[180px] sm:top-[180px] lg:top-[150px] hover:scale-125"
       onClick={onClick}
     >
       <ChevronLeft className="w-6 h-6 text-gray-700 md:w-8 md:h-8 hover:text-gray-900" />
@@ -17,8 +16,7 @@ const FeaturedProductsSlider = ({ products }) => {
 
   const NextArrow = ({ onClick }) => (
     <div
-      className="absolute right-0 z-10 transition-transform duration-300 ease-in-out transform -translate-y-1/2 cursor-pointer hover:scale-125"
-      style={{ top: "50%", right: "5px" }}
+      className="absolute -right-10 z-10 transition-transform duration-300 ease-in-out transform cursor-pointer top-[180px] lg:top-[150px] hover:scale-125"
       onClick={onClick}
     >
       <ChevronRight className="w-6 h-6 text-gray-700 md:w-8 md:h-8 hover:text-gray-900" />
@@ -36,6 +34,12 @@ const FeaturedProductsSlider = ({ products }) => {
     swipe: true,
     responsive: [
       {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
@@ -44,7 +48,7 @@ const FeaturedProductsSlider = ({ products }) => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
       {
@@ -57,30 +61,29 @@ const FeaturedProductsSlider = ({ products }) => {
   };
 
   return (
-    <section className="relative px-2 mt-20">
-      <h2 className="mx-4 mb-8 text-xl font-semibold md:text-2xl">
+    <section className="relative p-6 mt-20 sm:p-12 md:p-20">
+      <h2 className="mb-2 text-xl font-semibold md:mb-8 md:mx-4 md:text-2xl">
         Nuestros productos seleccionados
       </h2>
       <Slider {...settings}>
         {products.map((product) => (
-          <div key={product.id}>
-            <Link
-              to={`/product/${product.id}`}
-              className="flex flex-col items-center justify-center py-8 mb-12 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-md"
-            >
+          <Link key={product.id} to={`/product/${product.id}`}>
+            <div className="flex flex-col items-center justify-center px-4 py-8 m-auto mb-4 transition-transform duration-300 ease-in-out transform max-w-72 md:mb-10 hover:scale-105 hover:shadow-md">
+            <div className="relative w-full flex items-center justify-center overflow-hidden transition-all duration-300 transform bg-white border aspect-[3/4]">
               <img
                 src={product.images[0].url}
                 alt={product.name}
-                className="object-cover lg:w-48 lg:h-64 md:w-60 md:h-80 border-gray-50"
+                className={`object-cover max-w-[${product.images[0].width}px] max-h-[${product.images[0].height}px]`}
               />
-              <h3 className="w-full mt-2 text-sm text-center text-gray-500 truncate md:w-max">
+              </div>
+              <h3 className="w-full mt-4 text-sm text-center text-gray-500 truncate font-poppins">
                 {product.name}
               </h3>
-              <p className="mt-1 font-semibold text-center text-md font-poppins">
+              <p className="mt-1 text-lg font-medium text-gray-900">
                 ARS {product.priceArs}
               </p>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </Slider>
     </section>

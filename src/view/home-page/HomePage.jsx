@@ -16,7 +16,7 @@ const HomePage = () => {
   const { favourites } = useSelector((state) => state.cartFavs);
 
   const mostPopularProducts = [...products].slice(0, 20);
-  const selectedProducts = [...products].sort(() => 0.5 - Math.random()).slice(0, 10);
+  const selectedProducts = [...products].sort(() => 0.5 - Math.random()).slice(0, 8);
 
   useEffect(() => {
     dispatch(loadCategories());
