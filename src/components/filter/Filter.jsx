@@ -30,7 +30,7 @@ const Filter = ({ updateFilters, filters }) => {
   };
 
   return (
-    <div className="flex flex-col items-center h-full pb-2 pr-6 mr-8 overflow-y-scroll">
+    <div className="flex flex-col items-center h-[800px] pb-8 pr-10 overflow-y-scroll md:pr-8 md:mr-8">
       <AccordionFilter
         title="Categorías"
         expanded={isAccordionOpen.category}

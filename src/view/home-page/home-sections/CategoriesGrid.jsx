@@ -14,7 +14,7 @@ const CategoriesGrid = () => {
   }, [dispatch]);
 
   return (
-    <section className="container flex flex-wrap justify-center gap-24 my-48">
+    <section className="container flex flex-wrap justify-center gap-24 my-24">
       {selectedCategories.map((category) => (
         <Link
           key={category.name}

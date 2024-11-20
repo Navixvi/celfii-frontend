@@ -5,7 +5,7 @@ const PaginationButton = ({ disabled, onClick, Icon, ariaLabel }) => (
     onClick={onClick}
     disabled={disabled}
     className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
-      disabled ? "bg-gray-200 cursor-not-allowed" : "bg-red-500 hover:bg-red-600 text-white"
+      disabled ? "text-gray-400 cursor-not-allowed" : "hover:text-red-600"
     }`}
     aria-label={ariaLabel}
   >
@@ -37,7 +37,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, maxVisiblePages = 5
   const pageNumbers = generatePageNumbers();
 
   return (
-    <div className="flex items-center justify-center space-x-4 mt-7">
+    <div className="flex items-center justify-center w-full gap-4 mt-7">
       <PaginationButton
         disabled={currentPage === 1}
         onClick={() => currentPage > 1 && onPageChange(1)}
@@ -56,10 +56,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange, maxVisiblePages = 5
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`px-3 py-1 rounded-md transition-colors ${
-            page === currentPage
-              ? "bg-red-600 text-white"
-              : "bg-gray-200 hover:bg-gray-300 text-black"
+          className={`hidden md:block mx-2 p-1 ${
+            page === currentPage ? "text-red-500" : " border-b-2 border-white hover:border-red-600"
           }`}
           aria-current={page === currentPage ? "page" : undefined}
         >
@@ -67,12 +65,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange, maxVisiblePages = 5
         </button>
       ))}
 
-      {currentPage < totalPages - 2 && <span className="text-gray-500">...</span>}
+      <span className="text-red-500 md:hidden">{currentPage}</span>
+
+      {currentPage < totalPages - 2 && <span className="hidden md:block">...</span>}
 
       {currentPage < totalPages - 1 && (
         <button
           onClick={() => onPageChange(totalPages)}
-          className="px-3 py-1 text-black bg-gray-200 rounded-md hover:bg-gray-300"
+          className="hidden p-1 text-black border-b-2 border-white md:block hover:text-red-600 hover:border-red-600"
           aria-label={`Ir a la última página (${totalPages})`}
         >
           {totalPages}

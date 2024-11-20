@@ -44,7 +44,7 @@ const Items = ({ links, title }) => {
             ) : (
               <button
                 onClick={() => handleLinkClick(link)}
-                className="text-sm font-medium leading-6 text-gray-400 duration-200 hover:text-red-400"
+                className="text-sm font-medium leading-6 text-left text-gray-400 duration-200 hover:text-red-400"
               >
                 {link.name}
               </button>
