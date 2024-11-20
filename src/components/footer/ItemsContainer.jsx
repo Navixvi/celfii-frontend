@@ -25,7 +25,7 @@ const ItemsContainer = () => {
   }, [dispatch]);
 
   return (
-    <div className="container flex flex-wrap gap-20 py-24 md:justify-around">
+    <div className="container flex flex-wrap gap-10 md:py-24 md:gap-20 md:justify-around">
       <div className="w-full lg:w-1/5">
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <img src={logo} alt="Cel-Fii logo" className="w-32 h-auto" />

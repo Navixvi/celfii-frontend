@@ -11,7 +11,7 @@ const SocialIcons = ({ icons }) => {
             href={icon.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center p-2 mx-2 text-lg duration-200 bg-red-600 rounded-full hover:bg-red-700"
+            className="inline-flex items-center p-2 mr-2 text-lg duration-200 bg-red-600 rounded-full md:mx-2 hover:bg-red-700"
           >
             {IconComponent ? <IconComponent size={24} color="white" /> : null}
           </a>

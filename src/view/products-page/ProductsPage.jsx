@@ -125,13 +125,14 @@ const ProductsPage = () => {
   }, [dispatch, filters]);
 
   return (
-    <div className="min-h-screen mt-5">
-      <div className="flex flex-wrap items-center justify-between gap-10 mb-10 font-medium">
+    <div className="mt-5">
+      <div className="flex flex-wrap items-center justify-between gap-8 mb-10 font-medium md:gap-10">
         <h1 className="w-full text-2xl font-poppins lg:text-3xl lg:w-auto">{title}</h1>
         <div className="flex items-center justify-between w-full gap-6 lg:w-auto lg:justify-end">
-          <button className="flex gap-2" onClick={() => setIsFilterOpen(!isFilterOpen)}>
+          <button className="flex items-center gap-2" onClick={() => setIsFilterOpen(!isFilterOpen)}>
             <ListFilter />
-            {isFilterOpen ? "Mostrar" : "Ocultar"} Filtros
+            <span className="hidden sm:block">{isFilterOpen ? "Ocultar" : "Mostrar"} filtros</span>
+            <span className="sm:hidden">Filtros</span>
             <div
               className={`w-2 h-2 rounded-full ${hasValidProps(filters) ? "bg-red-500" : "hidden"}`}
             />
@@ -142,13 +143,13 @@ const ProductsPage = () => {
 
       <div className="relative flex gap-5">
         <aside
-          className={`z-50 absolute top-0 left-0 bg-white transform transition-all ${
-            isFilterOpen ? "translate-x-0 w-full md:w-80" : "-translate-x-80 w-0"
+          className={`z-30 absolute top-0 left-0 bg-white transform transition-all ${
+            isFilterOpen ? "translate-x-0 w-screen md:w-80" : "-translate-x-80 w-0"
           } h-[calc(100vh-250px)] overflow-visible transition-width duration-300`}>
           <Filter updateFilters={updateFilters} filters={filters} isOpen={isFilterOpen} />
         </aside>
         <div
-          className={`h-full flex-1 transition-all duration-300 ${
+          className={`w-full flex-1 transition-all duration-300 ${
             isFilterOpen ? "ml-80" : "ml-0"
           }`}>
           {loading ? (
@@ -156,7 +157,7 @@ const ProductsPage = () => {
               {Array(10)
                 .fill(0)
                 .map((_, index) => (
-                  <div key={index} className="p-4 bg-white rounded shadow">
+                  <div key={index} className="p-4">
                     <Skeleton height={150} />
                     <div className="mt-4">
                       <Skeleton width="80%" height={20} />
@@ -169,7 +170,7 @@ const ProductsPage = () => {
             <p>No se encontraron productos.</p>
           ) : (
             <>
-              <Cards products={products} favourites={favourites} />
+              <Cards products={products} favourites={favourites} isFilterOpen={isFilterOpen} />
               <Pagination
                 currentPage={filters.page}
                 totalPages={Math.ceil(totalItems / filters.perPage)}
