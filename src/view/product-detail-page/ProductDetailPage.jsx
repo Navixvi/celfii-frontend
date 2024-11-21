@@ -27,6 +27,7 @@ const ProductDetailPage = () => {
     dispatch(loadCartFavs());
     dispatch(loadProduct(id));
     dispatch(loadProducts());
+    window.scrollTo(0, 0);
   }, [dispatch, id]);
 
   if (error) return <p>Error al cargar detalles del producto: {error}</p>;
