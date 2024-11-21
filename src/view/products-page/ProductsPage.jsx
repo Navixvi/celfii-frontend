@@ -125,9 +125,9 @@ const ProductsPage = () => {
   }, [dispatch, filters]);
 
   return (
-    <div className="mt-5">
+    <div className="px-5 py-4 my-5 md:mx-10">
       <div className="flex flex-wrap items-center justify-between gap-8 mb-10 font-medium md:gap-10">
-        <h1 className="w-full text-2xl font-poppins lg:text-3xl lg:w-auto">{title}</h1>
+        <h2 className="w-full text-2xl lg:text-3xl lg:w-auto">{title}</h2>
         <div className="flex items-center justify-between w-full gap-6 lg:w-auto lg:justify-end">
           <button className="flex items-center gap-2" onClick={() => setIsFilterOpen(!isFilterOpen)}>
             <ListFilter />
@@ -153,15 +153,15 @@ const ProductsPage = () => {
             isFilterOpen ? "ml-80" : "ml-0"
           }`}>
           {loading ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
               {Array(10)
                 .fill(0)
                 .map((_, index) => (
-                  <div key={index} className="p-4">
-                    <Skeleton height={150} />
+                  <div key={index}>
+                    <Skeleton height={300} borderRadius={0} />
                     <div className="mt-4">
-                      <Skeleton width="80%" height={20} />
-                      <Skeleton width="60%" height={20} />
+                      <Skeleton width="80%" height={20} borderRadius={0} />
+                      <Skeleton width="60%" height={20} borderRadius={0} />
                     </div>
                   </div>
                 ))}
@@ -169,14 +169,14 @@ const ProductsPage = () => {
           ) : products.length === 0 ? (
             <p>No se encontraron productos.</p>
           ) : (
-            <>
+            <div>
               <Cards products={products} favourites={favourites} isFilterOpen={isFilterOpen} />
               <Pagination
                 currentPage={filters.page}
                 totalPages={Math.ceil(totalItems / filters.perPage)}
                 onPageChange={(newPage) => updatePagintation({ page: newPage })}
               />
-            </>
+            </div>
           )}
         </div>
       </div>

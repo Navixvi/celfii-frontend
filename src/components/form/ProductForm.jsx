@@ -129,9 +129,9 @@ const ProductForm = ({ product, categories, onSubmit, onImageRemove, validate })
 
   return (
     <div className="max-w-2xl p-4 mx-auto">
-      <h1 className="mb-4 text-2xl font-bold">
+      <h2 className="mb-4 text-2xl font-semibold">
         {product ? "Actualizar Producto" : "Crear Producto"}
-      </h1>
+      </h2>
       <AdminForm initialvalues={initialvalues} onSubmit={onSubmit} fields={fields} />
     </div>
   );

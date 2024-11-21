@@ -1,26 +1,26 @@
-import { Link } from "react-router-dom";
-import { Heart, Menu } from "lucide-react";
-import CartButton from "../buttons/CartButton";
-
 import logo from "../../assets/logo-celfii2.png";
+import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
+
+import CartButton from "../buttons/CartButton";
 import OptionalNavBar from "./OptionalNavBar";
-import MobileMenuButton from "../mobile-menu/MobileMenuButton";
+import ResponsiveMenuButton from "./ResponsiveMenu";
 
 const NavBar = () => {
   const links = [
     { name: "Productos", link: "/productos?page=1", current: false },
+    { name: "Reparaciones", link: "/reparaciones", current: false },
     { name: "Nosotros", link: "/nosotros", current: false },
     { name: "Contacto", link: "/contacto", current: false },
-    { name: "Reparaciones", link: "/reparaciones", current: false },
   ];
 
   return (
     <nav className="z-10">
       <div className="flex items-center justify-between py-4 md:mx-12">
         <div className="mr-14 md:hidden">
-          <button className="p-2 text-2xl">
-            <MobileMenuButton links={links} />
-          </button>
+          <div className="p-2 text-2xl">
+            <ResponsiveMenuButton links={links} />
+          </div>
         </div>
         <div>
           <Link to="/">

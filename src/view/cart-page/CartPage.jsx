@@ -29,16 +29,16 @@ const CartPage = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4 bg-white shadow-lg rounded-lg mt-10">
-      <h1 className="text-3xl font-bold text-center mb-6">Mi Carrito</h1>
+    <div className="max-w-3xl p-4 mx-auto mt-10 bg-white rounded-lg shadow-lg">
+      <h2 className="mb-6 text-3xl font-semibold text-center">Mi Carrito</h2>
 
       {cart && cart.length === 0 ? (
         <div className="flex flex-col items-center justify-center text-center text-gray-600">
           <ShoppingCart className="w-16 h-16 mb-4 text-gray-400" />
           <p className="mb-4 text-xl font-semibold">Tu carrito está vacío.</p>
           <p className="mb-6 text-gray-500">
-            Para añadir productos, haz click en el botón de "Agregar al carrito" dentro del detalle
-            del producto.
+            {`Para añadir productos, haz click en el botón de "Agregar al carrito" dentro del detalle
+            del producto.`}
           </p>
           <Link to="/productos">
             <button className="px-6 py-3 text-white transition-all duration-300 bg-gray-500 rounded-full shadow hover:bg-gray-600">
@@ -52,7 +52,7 @@ const CartPage = () => {
             {cart && cart.length && cart.map((item) => <CartItem key={item.id} item={item} />)}
           </ul>
 
-          <div className="border-t mt-6 pt-4 flex justify-between text-xl font-semibold text-gray-700">
+          <div className="flex justify-between pt-4 mt-6 text-xl font-semibold text-gray-700 border-t">
             <span>Total:</span>
             <span>ARS {calculateTotal()}</span>
           </div>
@@ -61,11 +61,11 @@ const CartPage = () => {
 
           <button
             onClick={handleClearCart}
-            className="mt-4 w-full py-2 text-white bg-red-600 rounded-full hover:bg-red-700 transition-colors duration-300">
+            className="w-full py-2 mt-4 text-white transition-colors duration-300 bg-red-600 rounded-full hover:bg-red-700">
             Vaciar Carrito
           </button>
 
-          <div className="text-center mt-6 text-gray-500">
+          <div className="mt-6 text-center text-gray-500">
             ¿Quieres descubrir más?{" "}
             <Link to="/productos" className="text-red-600 hover:underline">
               Explora otros productos de nuestra tienda aquí

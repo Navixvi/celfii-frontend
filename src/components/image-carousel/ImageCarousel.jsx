@@ -29,14 +29,14 @@ const ImageCarousel = ({ images }) => {
   return (
     <div className="flex flex-col items-center space-y-4">
       <div
-        className="relative w-full h-64 bg-gray-200 rounded-lg overflow-hidden cursor-pointer"
+        className="relative flex items-center justify-center w-full overflow-hidden transition-all duration-300 transform bg-white border cursor-pointer aspect-square"
         onClick={() => openModal(currentIndex)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}>
         <img
           src={images[currentIndex].url}
           alt={images[currentIndex].altText || "Imagen del producto"}
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
         />
 
         {currentIndex > 0 && (
@@ -45,7 +45,7 @@ const ImageCarousel = ({ images }) => {
               e.stopPropagation();
               prevImage();
             }}
-            className={`absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 p-2 rounded-e-full transition-opacity duration-300 ${
+            className={`absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 p-2 transition-opacity duration-300 ${
               hovered ? "opacity-100" : "opacity-0"
             }`}>
             <ChevronLeft className="text-white" />
@@ -58,7 +58,7 @@ const ImageCarousel = ({ images }) => {
               e.stopPropagation();
               nextImage();
             }}
-            className={`absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 p-2 rounded-l-full transition-opacity duration-300 ${
+            className={`absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 p-2 transition-opacity duration-300 ${
               hovered ? "opacity-100" : "opacity-0"
             }`}>
             <ChevronRight className="text-white" />
@@ -66,11 +66,11 @@ const ImageCarousel = ({ images }) => {
         )}
       </div>
 
-      <div className="flex space-x-2 mt-4">
+      <div className="flex mt-4 space-x-2">
         {images.slice(0, maxVisibleImages).map((image, index) => (
           <div
             key={index}
-            className="relative w-20 h-20 bg-gray-100 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent hover:border-blue-500"
+            className="relative w-20 h-20 overflow-hidden bg-gray-100 border-2 border-transparent cursor-pointer hover:border-blue-500"
             onClick={() => {
               setCurrentIndex(index);
               if (index === maxVisibleImages - 1 && extraImages > 0) {
@@ -80,10 +80,10 @@ const ImageCarousel = ({ images }) => {
             <img
               src={image.url}
               alt={image.altText || `Imagen ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full"
             />
             {index === maxVisibleImages - 1 && extraImages > 0 && (
-              <div className="absolute inset-0 bg-black bg-opacity-50 text-white flex items-center justify-center text-lg font-bold">
+              <div className="absolute inset-0 flex items-center justify-center text-lg text-white bg-black bg-opacity-50 font-semisemibold">
                 +{extraImages}
               </div>
             )}
@@ -96,16 +96,16 @@ const ImageCarousel = ({ images }) => {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
           onClick={closeModal}>
           <button
-            className="absolute top-4 right-4 text-white text-2xl font-bold"
+            className="absolute text-2xl font-semibold text-white top-4 right-4"
             onClick={closeModal}>
             <X />
           </button>
           <div
-            className="relative w-full max-w-2xl h-96 bg-white rounded-lg overflow-hidden"
+            className="relative w-full max-w-2xl overflow-hidden bg-white h-96"
             onClick={(e) => e.stopPropagation()}>
             {currentIndex > 0 && (
               <button
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                className="absolute p-2 text-white transform -translate-y-1/2 bg-gray-800 left-4 top-1/2"
                 onClick={prevImage}>
                 <ChevronLeft />
               </button>
@@ -113,11 +113,11 @@ const ImageCarousel = ({ images }) => {
             <img
               src={images[currentIndex].url}
               alt={images[currentIndex].altText || `Imagen ${currentIndex + 1}`}
-              className="w-full h-full object-contain"
+              className="object-contain w-full h-full"
             />
             {currentIndex < images.length - 1 && (
               <button
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                className="absolute p-2 text-white transform -translate-y-1/2 bg-gray-800 rounded-full right-4 top-1/2"
                 onClick={nextImage}>
                 <ChevronRight />
               </button>

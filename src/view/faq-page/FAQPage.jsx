@@ -26,18 +26,18 @@ const FAQPage = () => {
   }, [faqId]);
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-12">
-      <h1 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+    <div className="max-w-3xl p-6 mx-auto mt-12 bg-white rounded-lg shadow-lg">
+      <h2 className="mb-8 text-3xl font-semibold text-center text-gray-900">
         Preguntas Frecuentes
-      </h1>
+      </h2>
       <div className="space-y-6">
         {faqs.map((faq, index) => (
-          <div key={index} id={`faq-${index}`} className="border-b border-gray-200 pb-4">
+          <div key={index} id={`faq-${index}`} className="pb-4 border-b border-gray-200">
             <button
-              className="w-full flex justify-between items-center text-left focus:outline-none"
+              className="flex items-center justify-between w-full text-left focus:outline-none"
               onClick={() => toggleAccordion(index)}
             >
-              <h2 className="text-xl text-gray-800 font-medium">{faq.question}</h2>
+              <h3 className="text-xl font-medium text-gray-800">{faq.question}</h3>
               <span
                 className={`transform transition-transform duration-300 ${
                   openIndex === index ? "rotate-180 text-red-500" : "text-gray-500"
@@ -47,7 +47,7 @@ const FAQPage = () => {
               </span>
             </button>
             {openIndex === index && (
-              <p className="text-gray-700 text-base mt-4 leading-relaxed">{faq.answer}</p>
+              <p className="mt-4 text-base leading-relaxed text-gray-700">{faq.answer}</p>
             )}
           </div>
         ))}
