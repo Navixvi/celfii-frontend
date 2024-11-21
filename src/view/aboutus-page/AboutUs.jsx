@@ -44,8 +44,8 @@ const AboutUs = () => {
       {/* Referencia de video */}
       <div className="w-full mt-16 border shadow-md">
         <div className="flex flex-col items-center justify-center w-full gap-4 h-[400px]">
-          <h1 className="text-5xl font-semibold text-center">Cel-Fii Tecnología</h1>
-          <span className="text-3xl font-semibold text-red-500">Referencia de video</span>
+          <h1 className="text-5xl font-semibold text-center">Cel-Fii</h1>
+          <span className="text-3xl font-semibold text-red-500">Tecnología</span>
         </div>
       </div>
       {/* <video

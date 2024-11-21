@@ -45,7 +45,7 @@ const ProductDetail = ({ product, cart, isFavourite, whatsappLink }) => {
 
         <div className="flex flex-col">
           <h2 className="text-3xl font-semibold">{product.name}</h2>
-          <span className="my-4 text-lg font-medium text-gray-400">{product.category.name}</span>
+          <span className="my-4 text-lg font-medium text-gray-400">{product.category? product.category.name : ""}</span>
           <span className="mb-4 text-2xl font-semibold text-gray-700">ARS {product.priceArs}</span>
           {item && item.quantity >= product.stock ? (
             <button
