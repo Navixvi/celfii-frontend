@@ -39,9 +39,9 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-[80vh]">
       <div className="w-full max-w-md p-8 space-y-6 bg-gray-100 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-center text-black">Iniciar sesión</h1>
+        <h2 className="text-3xl font-semibold text-center text-black">Iniciar sesión</h2>
         {errorMessage && <div className="text-center text-red-500">{errorMessage}</div>}
         <GenericForm
           initialValues={initialValues}

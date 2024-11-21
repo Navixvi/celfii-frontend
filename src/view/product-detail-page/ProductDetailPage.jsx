@@ -1,53 +1,81 @@
 import "react-toastify/dist/ReactToastify.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { loadCartFavs, loadProduct } from "../../redux/actions";
+import { loadCartFavs, loadProduct, loadProducts } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-
-
 import ProductDetail from "../../components/product-detail/ProductDetail";
+import FeaturedProductsSlider from "../../view/home-page/home-sections/FeaturedProductsSlider";
 
 const ProductDetailPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { favourites, cart } = useSelector((state) => state.cartFavs);
   const { product, loading, error } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.products);
 
+  const featuredProducts = products.slice(0, 10);
   const isFavourite = favourites ? favourites?.some((fav) => fav.id === product?.id) : false;
+
+  const phoneNumber = "+5492604545982";
+  const message = `¡Hola! Quería consultar por el producto ${product.name}`;
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   useEffect(() => {
     dispatch(loadCartFavs());
     dispatch(loadProduct(id));
+    dispatch(loadProducts());
   }, [dispatch, id]);
-
-  if (loading) {
-    return (
-      <div className="relative max-w-6xl p-6 mx-auto mt-2 bg-white rounded-lg shadow-lg">
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Esqueleto de imagen */}
-          <Skeleton height={300} width={300} />
-          {/* Esqueleto de detalles */}
-          <div className="flex-1">
-            <Skeleton height={40} width="70%" />
-            <Skeleton height={20} width="50%" className="mt-2" />
-            <Skeleton height={150} className="mt-4" />
-            <div className="mt-4 flex gap-4">
-              <Skeleton height={40} width={100} />
-              <Skeleton height={40} width={100} />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (error) return <p>Error al cargar detalles del producto: {error}</p>;
 
   return (
-    <div className="relative max-w-6xl p-6 mx-auto mt-2 bg-white rounded-lg shadow-lg">
-      <ProductDetail product={product} cart={cart} isFavourite={isFavourite} />
+    <div className="relative py-28">
+      <div className="container mx-auto">
+        {loading && (
+          <div className="flex flex-col gap-6 md:flex-row">
+            <Skeleton height={500} width={500} borderRadius={0} />
+            <div className="flex flex-col flex-1 gap-2">
+              <Skeleton height={30} width="70%" borderRadius={0} />
+              <Skeleton height={30} width="50%" borderRadius={0} />
+              <Skeleton height={30} width="20%" />
+              <Skeleton height={30} width={100} borderRadius={0} />
+            </div>
+          </div>
+        )}
+        {!loading && (
+          <ProductDetail
+            product={product}
+            cart={cart}
+            isFavourite={isFavourite}
+            whatsappLink={whatsappLink}
+          />
+        )}
+        
+        <div className="p-12 my-20 bg-gray-100">
+          <h3 className="text-xl font-semibold text-center">
+            ¿Tienes preguntas sobre este producto?
+          </h3>
+          <p className="mt-2 text-center text-gray-600">
+            Si tienes alguna duda, ¡estamos para ayudarte! Puedes contactarnos directamente por
+            WhatsApp.
+          </p>
+          <button
+            onClick={() => window.open(whatsappLink, "_blank")}
+            className="w-full px-4 py-2 mt-4 font-semibold text-center text-white transition bg-green-500 hover:bg-green-700"
+          >
+            Contáctanos por WhatsApp
+          </button>
+        </div>
+
+        {featuredProducts.length > 0 ? (
+          <FeaturedProductsSlider products={featuredProducts} />
+        ) : (
+          <p>Cargando productos destacados...</p>
+        )}
+      </div>
     </div>
   );
 };

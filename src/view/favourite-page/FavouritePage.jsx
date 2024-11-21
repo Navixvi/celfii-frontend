@@ -15,11 +15,11 @@ const FavouritePage = () => {
     const storedFavs = localStorage.getItem("favourites");
     if (!storedFavs) saveToLocalStorage("favourites", []);
     dispatch(loadCartFavs("favourites"));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="container mt-10">
-      <h1 className="text-2xl font-bold mb-10 text-center">Mis productos favoritos</h1>
+      <h2 className="mb-10 text-2xl font-semibold text-center">Mis productos favoritos</h2>
       {favourites && favourites.length === 0 ? (
         <div className="flex flex-col items-center justify-center text-center text-gray-600">
           <Heart className="w-24 h-24 mb-4 text-red-400 animate-pulse" />{" "}
@@ -34,7 +34,7 @@ const FavouritePage = () => {
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1">
           {" "}
           <Cards products={favourites} favourites={favourites} />
         </div>

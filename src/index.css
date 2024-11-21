@@ -16,3 +16,7 @@
     @apply w-full my-2 border border-gray-200;
   }
 }
+
+h1, h2, h3 {
+  @apply font-poppins
+}

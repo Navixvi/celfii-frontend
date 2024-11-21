@@ -29,7 +29,7 @@ const Items = ({ links, title }) => {
 
   return (
     <div>
-      <h2 className="mb-2 font-semibold text-white">{title}</h2>
+      <h2 className="mb-2 font-medium text-white">{title}</h2>
       <ul>
         {links.map((link) => (
           <li key={link.name}>

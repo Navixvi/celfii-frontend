@@ -27,17 +27,17 @@ const ProductShow = (props) => {
           <TextField
             source="name"
             className={`${isDarkMode ? "text-white" : "text-black"}`}
-            style={{ fontSize: "2rem" }}
+            style={{ fontSize: "2rem", fontWeight: 600 }}
           />
         </div>
 
-        <div className="mb-6 border-b pb-4">
-          <h2
+        <div className="pb-4 mb-6 border-b">
+          <h3
             className={`text-2xl font-semibold ${
               isDarkMode ? "text-secondary.main" : "text-red-600"
             } mb-4`}>
             Información Básica
-          </h2>
+          </h3>
           <div className={`flex flex-col space-y-2 ${isDarkMode ? "text-white" : "text-gray-700"}`}>
             <div>
               <span className="font-semibold">Descripción:</span>
@@ -50,7 +50,7 @@ const ProductShow = (props) => {
           </div>
         </div>
 
-        <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
           <div className={`p-4 rounded-lg shadow ${isDarkMode ? "bg-red-900" : "bg-red-50"}`}>
             <h3
               className={`text-xl font-semibold ${isDarkMode ? "text-white" : "text-black"} mb-2`}>
@@ -90,30 +90,30 @@ const ProductShow = (props) => {
           </div>
         </div>
 
-        <div className="mb-6 border-b pb-4">
-          <h2
+        <div className="pb-4 mb-6 border-b">
+          <h3
             className={`text-2xl font-semibold ${
               isDarkMode ? "text-secondary.main" : "text-red-600"
             } mb-4`}>
             Imágenes
-          </h2>
+          </h3>
           <div className="grid grid-cols-3 gap-4">
             {product && product.images && product.images.length && product.images.map((_, index) => (
               <ImageField
                 key={index}
                 source={`images[${index}].url`}
-                className="w-full h-32 m-0 flex justify-center items-center object-cover border-2"
+                className="flex items-center justify-center object-cover w-full h-32 m-0 border-2"
               />
             ))}
           </div>
         </div>
-        <div className="border-b pb-4">
-          <h2
+        <div className="pb-4 border-b">
+          <h3
             className={`text-2xl font-semibold ${
               isDarkMode ? "text-secondary.main" : "text-red-600"
             } mb-4`}>
             Información Adicional
-          </h2>
+          </h3>
           <div className={`space-y-2 ${isDarkMode ? "text-white" : "text-gray-700"}`}>
             <div>
               <span className="font-semibold">ID:</span>

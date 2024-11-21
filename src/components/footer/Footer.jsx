@@ -13,29 +13,29 @@ const Footer = () => {
 
   return (
     <footer className="z-40 mt-20 bg-black">
-      {!pathname.startsWith("/product") && !pathname.startsWith("//private-admin-console") && (
-        <div className="p-8 text-center bg-gray-50 sm:p-12 md:py-20 md:px-24 lg:py-32 lg:px-40">
-          <p className="text-lg font-medium md:text-xl">Estamos aquí para ti</p>
-          <h3 className="my-5 text-2xl font-semibold md:text-3xl lg:text-4xl font-poppins">
-            ¿Tienes Preguntas?
-          </h3>
-          <p className="px-4 text-sm font-medium leading-relaxed sm:px-12 md:px-16 lg:px-32 xl:px-40">
-            En Cel-Fii, valoramos tu experiencia y queremos asegurarnos de que tengas toda la
-            información que necesitas. Si tienes alguna pregunta sobre nuestros productos, servicios
-            o cualquier otro tema, no dudes en contactarnos a través de WhatsApp. Nuestro equipo
-            está disponible para ayudarte y responder a tus inquietudes de manera rápida y
-            eficiente. ¡Escríbenos y hablemos!
-          </p>
-          <button className="px-6 py-3 mt-8 text-sm rounded-full primary-btn" >
-            <a href={whatsappLink}>
-              Abrir Chat
-            </a>
-          </button>
-        </div>
-      )}
+      {!pathname.startsWith("/product") &&
+        !pathname.startsWith("/private-admin-console") &&
+        !pathname.startsWith("/private-admin-entry") && (
+          <div className="p-8 text-center bg-gray-50 sm:p-12 md:py-20 md:px-24 lg:py-32 lg:px-40">
+            <p className="text-lg font-medium md:text-xl">Estamos aquí para ti</p>
+            <h3 className="my-5 text-2xl font-medium md:text-3xl lg:text-4xl">
+              ¿Tienes Preguntas?
+            </h3>
+            <p className="px-4 text-sm font-medium leading-relaxed sm:px-12 md:px-16 lg:px-32 xl:px-40">
+              En Cel-Fii, valoramos tu experiencia y queremos asegurarnos de que tengas toda la
+              información que necesitas. Si tienes alguna pregunta sobre nuestros productos,
+              servicios o cualquier otro tema, no dudes en contactarnos a través de WhatsApp.
+              Nuestro equipo está disponible para ayudarte y responder a tus inquietudes de manera
+              rápida y eficiente. ¡Escríbenos y hablemos!
+            </p>
+            <button className="px-6 py-3 mt-8 text-sm rounded-full primary-btn">
+              <a href={whatsappLink}>Abrir Chat</a>
+            </button>
+          </div>
+        )}
       <div className="px-8 py-16 md:px-20 2xl:px-0">
         <ItemsContainer />
-        <div className="container flex flex-col py-2 mt-8 text-sm text-gray-400 md:m-0 md:text-center lg:flex-row md:items-center md:justify-between">
+        <div className="container flex flex-col py-2 mt-8 text-sm text-gray-400 2xl:m-auto md:m-0 md:text-center lg:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2 mb-2 md:mb-0 md:gap-4 md:flex-row md:items-center">
             <span>&copy; {new Date().getFullYear()} Cel-Fii. Todos los derechos reservados.</span>
             <Link

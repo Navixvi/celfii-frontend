@@ -21,7 +21,7 @@ const App = () => {
           draggable
         />
         {isUserPage && <NavBar />}
-        <main className={`flex-1 ${pathname !== "/" ? "px-5 py-4 md:mx-10" : ""}`}>
+        <main className="flex-1">
           <AppRoutes />
         </main>
         {isUserPage && <WhatsAppButton />}

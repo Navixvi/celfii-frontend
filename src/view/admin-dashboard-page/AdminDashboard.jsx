@@ -88,42 +88,49 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   return (
-    <ThemeProvider theme={lightTheme}>
-      <Admin
-        dataProvider={dataProvider}
-        basename="/private-admin-console"
-        layout={CustomLayout}
-        theme={lightTheme}
-        darkTheme={darkTheme}
-      >
-        <Resource
-          name="products"
-          options={{ label: "Productos" }}
-          list={ProductList}
-          show={ProductShow}
-          edit={ProductEdit}
-          create={ProductCreate}
-        />
-        <Resource
-          name="categories"
-          options={{ label: "Categorias" }}
-          list={CategoryList}
-          edit={CategoryEdit}
-          create={CategoryCreate}
-        />
-        <Resource name="roles" options={{ label: "Roles" }} list={RoleList} />
-        {isMaster && (
+    <div className="px-5 py-4 md:mx-10">
+      <ThemeProvider theme={lightTheme}>
+        <Admin
+          dataProvider={dataProvider}
+          basename="/private-admin-console"
+          layout={CustomLayout}
+          theme={lightTheme}
+          darkTheme={darkTheme}
+        >
           <Resource
-            name="users"
-            options={{ label: "Usuarios" }}
-            list={UserList}
-            create={UserCreate}
-            edit={UserEdit}
+            name="products"
+            options={{ label: "Productos" }}
+            list={ProductList}
+            show={ProductShow}
+            edit={ProductEdit}
+            create={ProductCreate}
           />
-        )}
-        <Resource name="dollar" options={{ label: "Dólar" }} list={DollarList} edit={DollarEdit} />
-      </Admin>
-    </ThemeProvider>
+          <Resource
+            name="categories"
+            options={{ label: "Categorias" }}
+            list={CategoryList}
+            edit={CategoryEdit}
+            create={CategoryCreate}
+          />
+          <Resource name="roles" options={{ label: "Roles" }} list={RoleList} />
+          {isMaster && (
+            <Resource
+              name="users"
+              options={{ label: "Usuarios" }}
+              list={UserList}
+              create={UserCreate}
+              edit={UserEdit}
+            />
+          )}
+          <Resource
+            name="dollar"
+            options={{ label: "Dólar" }}
+            list={DollarList}
+            edit={DollarEdit}
+          />
+        </Admin>
+      </ThemeProvider>
+    </div>
   );
 };
 

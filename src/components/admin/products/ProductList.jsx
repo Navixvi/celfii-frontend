@@ -68,7 +68,7 @@ const ProductDataGrid = () => {
                     : record.stock > 1
                     ? "orange"
                     : "red",
-                fontWeight: "bold",
+                fontWeight: "semibold",
               }}
             >
               {record.stock}
