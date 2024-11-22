@@ -1,4 +1,4 @@
-// import video from '../../assets/celfii-video.mp4'
+import video from '../../assets/celfii-video.mp4'
 
 const AboutUs = () => {
   return (
@@ -41,14 +41,7 @@ const AboutUs = () => {
         <br />
         Sábados: <span className="font-semibold">9:30 - 13:00 </span>
       </p>
-      {/* Referencia de video */}
-      <div className="w-full mt-16 border shadow-md">
-        <div className="flex flex-col items-center justify-center w-full gap-4 h-[400px]">
-          <h1 className="text-5xl font-semibold text-center">Cel-Fii</h1>
-          <span className="text-3xl font-semibold text-red-500">Tecnología</span>
-        </div>
-      </div>
-      {/* <video
+      <video
         className="w-full mt-16"
         controls
         autoPlay
@@ -57,7 +50,7 @@ const AboutUs = () => {
       >
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.
-      </video> */}
+      </video>
     </div>
   );
 };
