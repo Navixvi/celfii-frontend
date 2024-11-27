@@ -16,10 +16,10 @@ const HeroBanner = () => {
 
   return (
     <section>
-      <div className="relative w-full bg-red-50">
+      <div className="relative w-full h-screen bg-red-50">
         <video
           ref={videoRef}
-          className="object-cover w-full"
+          className="absolute top-0 left-0 object-fill w-full"
           style={{ height: "calc(100vh - 85px)" }}
           autoPlay
           loop

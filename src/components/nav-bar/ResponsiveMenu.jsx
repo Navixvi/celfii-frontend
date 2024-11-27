@@ -13,7 +13,7 @@ const ResponsiveMenuButton = ({ links }) => (
             <Menu className="block w-6 h-6" aria-hidden="true" />
           )}
         </DisclosureButton>
-        <DisclosurePanel className="absolute left-0 z-10 transition-all duration-300 bg-white top-15 w-50">
+        <DisclosurePanel className="absolute left-0 z-[99] transition-all duration-300 bg-white top-20 w-50">
           <ul className="flex flex-col gap-4 px-6 py-4">
             {links.map((item) => (
               <li key={item.name} className="text-white">

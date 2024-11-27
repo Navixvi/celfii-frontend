@@ -26,7 +26,7 @@ const SearchBar = ({ onSearch, variant = "default" }) => {
           />
         </div>
       ) : (
-        <div className="w-full relative flex gap-x-[10px] lg:w-fit">
+        <div className="w-full relative flex gap-x-[10px] lg:w-fit overflow-hidden mt-3">
           <span className="flex items-center justify-center group">
             <Search />
           </span>
