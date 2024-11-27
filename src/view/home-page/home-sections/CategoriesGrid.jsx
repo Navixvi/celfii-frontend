@@ -22,13 +22,12 @@ const CategoriesGrid = () => {
           onClick={() => {
             localStorage.setItem("selectedCategory", category.name);
             window.scrollTo(0, 0);
-          }}
-        >
+          }}>
           <div className="text-center transition-transform duration-300 hover:text-primary">
             <img
               src={category.image}
               alt={category.name}
-              className="w-48 h-48 border rounded-full shadow-sm border-gray-50"
+              className="w-36 h-36 sm:w-48 sm:h-48 border rounded-xl border-gray-100 object-cover transition-transform duration-300 hover:shadow-lg hover:scale-105"
             />
             <h3 className="mt-5 font-medium">{category.name}</h3>
           </div>
