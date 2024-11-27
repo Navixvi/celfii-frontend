@@ -38,10 +38,10 @@ const NavBar = () => {
             ))}
           </ul>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <Link
             to="/favourites"
-            className="p-2 text-2xl duration-200 rounded-full hover:bg-primary hover:text-white">
+            className="p-0 text-2xl duration-200 rounded-full hover:bg-primary hover:text-white">
             <Heart />
           </Link>
           <CartButton />

@@ -21,7 +21,7 @@ const ProductsPage = () => {
   const { favourites } = useSelector((state) => state.cartFavs);
   const { products, totalItems, loading } = useSelector((state) => state.products);
 
-  const [isFilterOpen, setIsFilterOpen] = useState(true);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({
     page: 1,
     perPage: 54,
@@ -153,12 +153,12 @@ const ProductsPage = () => {
             isFilterOpen ? "ml-80" : "ml-0"
           }`}>
           {loading ? (
-            <div className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+            <div className="grid grid-cols-3 gap-x-10 gap-y-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
               {Array(10)
                 .fill(0)
                 .map((_, index) => (
                   <div key={index}>
-                    <Skeleton height={300} borderRadius={0} />
+                    <Skeleton height={100} borderRadius={0} />
                     <div className="mt-4">
                       <Skeleton width="80%" height={20} borderRadius={0} />
                       <Skeleton width="60%" height={20} borderRadius={0} />
